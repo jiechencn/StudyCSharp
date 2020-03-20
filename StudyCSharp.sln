@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedCollectionTest", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTest", "LinqTest\LinqTest.csproj", "{C06FE585-0CC5-4037-A57A-2CDD5B0DEC79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTest", "AsyncTest\AsyncTest.csproj", "{8EC93CEB-D222-4E1B-B1C9-11294B087361}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{C06FE585-0CC5-4037-A57A-2CDD5B0DEC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06FE585-0CC5-4037-A57A-2CDD5B0DEC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06FE585-0CC5-4037-A57A-2CDD5B0DEC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC93CEB-D222-4E1B-B1C9-11294B087361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC93CEB-D222-4E1B-B1C9-11294B087361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC93CEB-D222-4E1B-B1C9-11294B087361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC93CEB-D222-4E1B-B1C9-11294B087361}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
