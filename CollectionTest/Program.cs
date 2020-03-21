@@ -21,7 +21,6 @@ namespace CollectionTest
             foreach(var cscore in chinese_scores)
             {
                 Console.WriteLine($"{cscore.Key}={cscore.Value}");
-
             }
 
             Console.WriteLine("sort dictionary by student's Name by default");
