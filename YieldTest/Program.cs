@@ -10,6 +10,17 @@ namespace YieldTest
     {
         static void Main(string[] args)
         {
+            Class myClass = new Class();
+            for (int i = 1; i <= 10; i++)
+            {
+                Student s = new Student("name_" + i, i);
+                myClass.Add(s);
+            }
+
+            foreach(var o in myClass)
+            {
+                Console.WriteLine(o.Name);
+            }
         }
     }
 }
