@@ -23,9 +23,12 @@ namespace AsyncTest
         private static async Task<bool> BusyMorning()
         {
             var heatWaterTask = HeatWaterAsync(20);
+
             var brushTeethTask = BrushTeethAsync(3);
             var washFaceTask = WashFaceAsync(3, await brushTeethTask);
+
             await washFaceTask;
+
             var cookNoodleTask = CookNoodleAsync(5, await heatWaterTask);
             var eatNoodleTask = EatNoodleAsync(6, await cookNoodleTask);
             
@@ -52,10 +55,7 @@ namespace AsyncTest
         static async Task<bool> BrushTeethAsync(int seconds)
         {
             Console.WriteLine("BrushTeeth " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("BrushTeeth  ----  done");
             return true;
         }
@@ -63,10 +63,7 @@ namespace AsyncTest
         {
             if (!brushed) return false;
             Console.WriteLine("WashFace " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("WashFace  ----  done");
             return true;
         }
@@ -74,10 +71,7 @@ namespace AsyncTest
         {
             if (!heated) return false;
             Console.WriteLine("CookNoodle " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("CookNoodle  ----  done");
             return true;
         }
@@ -85,10 +79,7 @@ namespace AsyncTest
         {
             if (!cooked) return false;
             Console.WriteLine("EatNoodle " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            }); 
+            await DoBusy(seconds);
             Console.WriteLine("EatNoodle  ----  done");
             return true;
         }
