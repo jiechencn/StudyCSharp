@@ -15,7 +15,7 @@ namespace EventTest
         {
             _name = name;
         }
-        public void SubscriberBroker(object broker, BrokerEventArgs brokerEvnt)
+        public void SubscriberBrokerEvent(object broker, BrokerEventArgs brokerEvnt)
         {
             Console.WriteLine($"{_name} is looking at house {brokerEvnt.Brand} with price {brokerEvnt.Price}");
         }

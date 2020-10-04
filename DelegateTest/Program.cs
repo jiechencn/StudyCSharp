@@ -16,18 +16,19 @@ namespace DelegateTest
             Console.WriteLine("********* normal delegate");
             // 普通委托, 委托类声明的方法有什么样的参数和返回类型，被委托的方法也必须有同样的参数和返回类型
             Program p = new Program();
-            Calc myCalc1 = new Calc(p.Add);
-            Calc myCalc2 = new Calc(p.Sub);
-            Calc myCalc3 = p.Mult;
+            Calc add = new Calc(p.Add);
+            Calc sub = new Calc(p.Sub);
+            Calc mult = p.Mult;  // same with new Calc(p.Mult)
 
             //Calc myCalc3 = new Calc(p.Mult); same as above
             double a = 11, b = 10;
-            Console.WriteLine(myCalc1.Invoke(a, b)); // +
-            Console.WriteLine(myCalc2.Invoke(a, b)); // -
-            Console.WriteLine(myCalc3.Invoke(a, b)); // *
+            Console.WriteLine(add(a, b)); // +  same with .Invoke()
+            Console.WriteLine(add.Invoke(a, b));
+            Console.WriteLine(sub.Invoke(a, b)); // -
+            Console.WriteLine(mult.Invoke(a, b)); // *
 
-            Calc myCalc4 = p.Mult;
-            Console.WriteLine(p.doCalc1(myCalc4, a, b)); // *
+            Calc mult2 = p.Mult;
+            Console.WriteLine(p.doCalc(mult2, a, b)); // *
 
             Console.WriteLine("********* Func delegate");
             // Func委托,  被委托的函数有返回值
@@ -61,11 +62,13 @@ namespace DelegateTest
 
 
             Console.WriteLine("********* Action and Func together");
-            p.TriggerAlert(p.SendAlert, p.Log2File);
+            p.TriggerAlert("jiechencn@qq.com", p.SendAlert, p.Log2File);
+
+            Console.Read();
 
         }
         
-        public double doCalc1(Calc calc, double a, double b)
+        public double doCalc(Calc calc, double a, double b)
         {
             return calc.Invoke(a, b);
         }
@@ -117,9 +120,13 @@ namespace DelegateTest
             Console.WriteLine($"Alert sent to:{recipient}");
             return true;
         }
-        public void TriggerAlert(Func<string, bool> alert, Action<string> log)
+        public void TriggerAlert(string dest_email, Func<string, bool> alert, Action<string> log)
         {
-            alert.Invoke("jiechencn@qq.com");
+            bool r = alert.Invoke(dest_email);
+            if (r)
+            {
+                Console.WriteLine("sent succeed to:  " + dest_email);
+            }
             log.Invoke("alert.log");
 
         }

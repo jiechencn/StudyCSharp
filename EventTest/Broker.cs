@@ -13,6 +13,8 @@ namespace EventTest
         {
             Console.WriteLine($"Come on, we have {brand}. come here to buy...");
             BrokerEvent?.Invoke(this, new BrokerEventArgs(brand, price));
+            // or below is same
+            // if (BrokerEvent!=null) BrokerEvent(this, new BrokerEventArgs(brand, price));
         }
     }
 }
