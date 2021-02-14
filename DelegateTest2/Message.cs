@@ -54,6 +54,7 @@ namespace DelegateTest2
 
     internal abstract class AMessage
     {
-        public abstract string ToString();
+        // 添加 "new" 修饰符，覆盖 object.ToString()，让当前的方法称为一个新的方法，让子类实现override 
+        public new abstract string ToString();
     }
 }

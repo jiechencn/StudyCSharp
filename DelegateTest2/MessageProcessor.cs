@@ -8,20 +8,20 @@ namespace DelegateTest2
     {
         // Action<AMessage> 尖括号中的AMessage表示被委托的方法的参数，比如SendSMS方法的参数。
         // 它不需要有返回类型
-        static Action<AMessage> actions = MessageUtility<AMessage>.SendEmail;
+        static Action<T> actions = MessageUtility<T>.SendEmail;
 
         // Func<AMessage, bool> 尖括号中的AMessage表示被委托的方法的参数，比如LogDebug方法的参数。
         // 尖括号中的最后一个参数bool表示被委托的方法的返回类型，比如 LogDebug的返回类型为 bool.
         // Func必须存在有效的返回类型，并且返回类型不能是void
         // 多个Func最好不要使用多播，否则 func.invoke()只返回最后一个委托方法的返回值。所以应该使用数组传递，依次执行。
-        static Func<AMessage, bool>[] funcs =
+        static Func<T, bool>[] funcs =
         {
-            MessageUtility<AMessage>.LogDebug,
-            MessageUtility<AMessage>.LogInfo
+            MessageUtility<T>.LogDebug,
+            MessageUtility<T>.LogInfo
         };
         public MessageProcessor()
         {
-            actions += MessageUtility<AMessage>.SendSMS;
+            actions += MessageUtility<T>.SendSMS;
         }
 
         internal void ProcessNewMessage(object sender, MessageInfoEventArgs<T> e)
