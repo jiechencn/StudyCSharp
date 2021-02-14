@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3DC4309-9FCD-432F-92DE-C881E2134C35}</ProjectGuid>
+    <ProjectGuid>{6B046FC6-32B5-489A-BD6E-2485D33EE0BD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CompareTest</RootNamespace>
-    <AssemblyName>CompareTest</AssemblyName>
+    <RootNamespace>GenericTest</RootNamespace>
+    <AssemblyName>GenericTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,9 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
-    <Compile Include="StudentCollection.cs" />
-    <Compile Include="StudentComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

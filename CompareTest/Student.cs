@@ -30,6 +30,5 @@ namespace CompareTest
         {
             return $"{No}. {Name} is {Age} years old";
         }
-
     }
 }
