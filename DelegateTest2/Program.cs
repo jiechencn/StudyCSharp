@@ -50,7 +50,7 @@ namespace DelegateTest2
             Console.WriteLine("\n------- Event publisher and subscriber");
             var msgPublisher = new MessagePublisher<AMessage>();
             var msgProcessor = new MessageProcessor<AMessage>();
-            msgPublisher.NewMessageInfo += msgProcessor.ProcessNewMessage;
+            msgPublisher.NewMessageInfoHandler += msgProcessor.ProcessNewMessage;
             AMessage msg1 = new Message()
             {
                 Sender = "new sender 1",

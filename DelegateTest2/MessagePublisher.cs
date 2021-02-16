@@ -6,7 +6,7 @@ namespace DelegateTest2
 {
     internal class MessagePublisher<T> where T: AMessage
     {
-        public event EventHandler<MessageInfoEventArgs<T>> NewMessageInfo;
+        public event EventHandler<MessageInfoEventArgs<T>> NewMessageInfoHandler;
 
         private IList<T> messages = new List<T>();
 
@@ -22,7 +22,7 @@ namespace DelegateTest2
         internal void AddMessage(T msg)
         {
             messages.Add(msg);
-            NewMessageInfo?.Invoke(this, new MessageInfoEventArgs<T>(msg));
+            NewMessageInfoHandler?.Invoke(this, new MessageInfoEventArgs<T>(msg));
         }
 
         internal void AddMessage(T[] msgs)
