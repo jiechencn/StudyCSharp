@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace AsyncTest
 {
@@ -11,10 +14,8 @@ namespace AsyncTest
     {
         static void Main(string[] args)
         {
-
             var b = BusyMorning();
             b.Wait();
-            
             Console.WriteLine("***********  busy morning is finished");
 
             Console.Read();
@@ -28,11 +29,9 @@ namespace AsyncTest
             await washFaceTask;
             var cookNoodleTask = CookNoodleAsync(5, await heatWaterTask);
             var eatNoodleTask = EatNoodleAsync(6, await cookNoodleTask);
-            
             await eatNoodleTask;
             return true;
         }
-
         static async Task<bool> HeatWaterAsync(int seconds)
         {
             Console.WriteLine("HeatWater " + seconds);
@@ -52,10 +51,7 @@ namespace AsyncTest
         static async Task<bool> BrushTeethAsync(int seconds)
         {
             Console.WriteLine("BrushTeeth " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("BrushTeeth  ----  done");
             return true;
         }
@@ -63,10 +59,7 @@ namespace AsyncTest
         {
             if (!brushed) return false;
             Console.WriteLine("WashFace " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("WashFace  ----  done");
             return true;
         }
@@ -74,10 +67,7 @@ namespace AsyncTest
         {
             if (!heated) return false;
             Console.WriteLine("CookNoodle " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            });
+            await DoBusy(seconds);
             Console.WriteLine("CookNoodle  ----  done");
             return true;
         }
@@ -85,10 +75,7 @@ namespace AsyncTest
         {
             if (!cooked) return false;
             Console.WriteLine("EatNoodle " + seconds);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(seconds * 1000);
-            }); 
+            await DoBusy(seconds);
             Console.WriteLine("EatNoodle  ----  done");
             return true;
         }
