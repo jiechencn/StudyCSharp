@@ -20,6 +20,8 @@ namespace JsonTest
             Test5();
             Console.WriteLine("\n------------ test6");
             Test6();
+            Console.WriteLine("\n------------ test7");
+            Test7();
         }
         static void Test1()
         {
@@ -115,7 +117,7 @@ namespace JsonTest
             Console.WriteLine(error.InnerError?.InternalException?.Message);
             Console.WriteLine(error.InnerError?.InternalException?.Type);
             Console.WriteLine(error.InnerError?.InternalException?.StackTrace);
-            Exception ex = new Exception(error.InnerError?.Message ?? error.Message, error.InnerError?.InternalException);
+            Exception ex = new Exception(error.InnerError?.Message ?? error.Message ?? error.ToString(), error.InnerError?.InternalException);
         }
         static void Test4()
         {
@@ -216,6 +218,48 @@ namespace JsonTest
             Console.WriteLine(error.InnerError?.InternalException?.Type);
             Console.WriteLine(error.InnerError?.InternalException?.StackTrace);
 
+        }
+
+        static void Test7()
+        {
+            // tds exception
+            string errorstring = @"
+                {
+	                ""error"": {
+		                ""code"": ""0_code"",
+                        ""message"": ""0_message"",
+                        ""details"": [
+			                        {
+				                        ""code"": ""Client"",
+				                        ""target"": """",
+				                        ""message"": ""Ex6F9304|Microsoft.Exchange.Configuration.Tasks.ManagementObjectNotFoundException|The operation couldn't be performed because object 'user2@jichen0107d.com' couldn't be found on 'EXHV-1242.EXHV-1242dom.extest.microsoft.com'.""
+			                        }
+		                        ],
+		                ""innererror"": {
+			                ""message"": ""1_message"",
+			                ""type"": ""1_type"",
+			                ""stacktrace"": ""1_stacktrace"",
+                            ""internalexception"":{
+			                    ""message"": ""2_message"",
+			                    ""type"": ""2_type"",
+			                    ""stacktrace"": ""2_stacktrace""
+                            }
+		                }
+	                }
+                }
+                ";
+            IDictionary<string, object> responseDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(errorstring);
+
+            AdminApiError error = JsonConvert.DeserializeObject<AdminApiError>(responseDict["error"].ToString());
+            Console.WriteLine(error.Code);
+            Console.WriteLine(error.Message);
+            Console.WriteLine(error.InnerError?.Message);
+            Console.WriteLine(error.InnerError?.Type);
+            Console.WriteLine(error.InnerError?.StackTrace);
+            Console.WriteLine(error.InnerError?.InternalException?.Message);
+            Console.WriteLine(error.InnerError?.InternalException?.Type);
+            Console.WriteLine(error.InnerError?.InternalException?.StackTrace);
+            Exception ex = new Exception(error.InnerError?.Message ?? error.Message ?? error.ToString(), error.InnerError?.InternalException);
         }
     }
 }
