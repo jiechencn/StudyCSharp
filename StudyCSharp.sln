@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqTest2", "LinqTest2\Linq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncHttp", "AsyncHttp\AsyncHttp.csproj", "{48A1B98B-6AA9-4DDB-B3E0-47E0D6937BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeTest", "AttributeTest\AttributeTest.csproj", "{A10DE623-7C67-46C7-BE24-9435F8768F2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttributeTest", "AttributeTest\AttributeTest.csproj", "{A10DE623-7C67-46C7-BE24-9435F8768F2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTest", "JsonTest\JsonTest.csproj", "{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,14 @@ Global
 		{A10DE623-7C67-46C7-BE24-9435F8768F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A10DE623-7C67-46C7-BE24-9435F8768F2C}.Release|x64.ActiveCfg = Release|Any CPU
 		{A10DE623-7C67-46C7-BE24-9435F8768F2C}.Release|x64.Build.0 = Release|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Debug|x64.Build.0 = Debug|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Release|x64.ActiveCfg = Release|Any CPU
+		{8CEE2DF6-838E-4408-8D19-BEC2EEFF857B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
