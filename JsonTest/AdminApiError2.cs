@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace JsonTest
 {
-    internal class AdminApiError
+    internal class AdminApiError2
     {
         public string Code { get; set; }
         public string Message { get; set; }
@@ -18,17 +18,20 @@ namespace JsonTest
 
 
         [Serializable]
-        internal class AdminApiErrorDetail : Exception, ISerializable
+        internal class AdminApiErrorDetail2 : Exception, ISerializable
         {
-            public new string Message { get; set; }
-            public string Type { get; set; }
-            public new string StackTrace { get; set; }
-            public new AdminApiErrorDetail InnerException { get; set; }
-            public override string ToString()
-            {
-                return Message + "::" + StackTrace;
-            }
-            public AdminApiErrorDetail(SerializationInfo info, StreamingContext context)
+            private string _message { get; set; }
+            private string _type { get; set; }
+            private string _stacktrace { get; set; }
+            private AdminApiErrorDetail2 _adminapierrordetail2 { get; set; }
+
+            public override string Message => _message;
+            public string Type => _type;
+
+            public override string StackTrace => _stacktrace;
+            public new AdminApiErrorDetail2 InnerException => _adminapierrordetail2;
+ 
+            public AdminApiErrorDetail2(SerializationInfo info, StreamingContext context)
             {
                 if (info != null)
                 {
@@ -37,16 +40,16 @@ namespace JsonTest
                         switch (entry.Name.ToLower())
                         {
                             case "message":
-                                Message = entry.Value.ToString();
+                                this._message = entry.Value.ToString();
                                 break;
                             case "type":
-                                Type = entry.Value.ToString();
+                                _type = entry.Value.ToString();
                                 break;
                             case "stacktrace":
-                                StackTrace = entry.Value.ToString();
+                                _stacktrace = entry.Value.ToString();
                                 break;
                             case "internalexception":
-                                InnerException = JsonConvert.DeserializeObject<AdminApiErrorDetail>(entry.Value.ToString());
+                                _adminapierrordetail2 = JsonConvert.DeserializeObject<AdminApiErrorDetail2>(entry.Value.ToString());
                                 break;
                         }
                     }
@@ -68,7 +71,7 @@ namespace JsonTest
 
         }
 
-        public AdminApiErrorDetail InnerError { get; set; }
+        public AdminApiErrorDetail2 InnerError { get; set; }
 
     }
 }
