@@ -76,7 +76,7 @@ namespace LambdaTest
                 new Student { FullName = "Ajay", StreamId=1,  Score = 11 },
                 new Student { FullName = "Kunal", StreamId=2,  Score = 13  },
                 new Student { FullName = "Chandra", StreamId=2,  Score = 8  },
-};
+            };
             //Method syntax
             var _studentNames1 = studentsStream.Where(s=>s.StreamId==2).Select(s => new { s.FullName, s.Score}).OrderBy(s=>s.Score);
             _studentNames1.ToList().ForEach(s =>
