@@ -14,16 +14,24 @@ namespace AsyncTest
     {
         static void Main(string[] args)
         {
-            var b = BusyMorning();
-            b.Wait();
-            Console.WriteLine("***********  busy morning is finished");
+            Task b = MyMorningBegins();
+            //b.Wait();
+            //MyMorningBegins();
+            Console.WriteLine("go to school....");
 
             Console.Read();
         }
 
+        private static async Task MyMorningBegins()
+        {
+            await BusyMorning();
+            Console.WriteLine("***********  busy morning is finished");
+
+        }
+
         private static async Task<bool> BusyMorning()
         {
-            var heatWaterTask = HeatWaterAsync(20);
+            Task<bool> heatWaterTask = HeatWaterAsync(20);
             var brushTeethTask = BrushTeethAsync(3);
             var washFaceTask = WashFaceAsync(3, await brushTeethTask);
             await washFaceTask;
